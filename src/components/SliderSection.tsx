@@ -55,29 +55,6 @@ const SliderSection: React.FC = () => {
       <div className="absolute bottom-20 left-20 w-12 h-12 bg-purple-200 rounded-full opacity-25 animate-pulse"></div>
       <div className="absolute bottom-32 right-10 w-24 h-24 bg-pink-200 rounded-full opacity-20 animate-float-slow"></div>
 
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(180deg); }
-        }
-        @keyframes float-delay {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-15px) rotate(-180deg); }
-        }
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0px) scale(1); }
-          50% { transform: translateY(-10px) scale(1.1); }
-        }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        .animate-float-delay {
-          animation: float-delay 8s ease-in-out infinite;
-        }
-        .animate-float-slow {
-          animation: float-slow 10s ease-in-out infinite;
-        }
-      `}</style>
 
       <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
         {/* Animated Header */}
