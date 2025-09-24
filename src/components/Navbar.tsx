@@ -7,8 +7,27 @@ export default function Navbar() {
 
   return (
     <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
+      <style jsx>{`
+        @media (min-width: 1440px) {
+          .large-screen-nav {
+            height: 5rem; /* 80px */
+          }
+          .large-screen-text {
+            font-size: 1.125rem; /* 18px */
+          }
+        }
+        @media (min-width: 1920px) {
+          .large-screen-nav {
+            height: 6rem; /* 96px */
+          }
+          .large-screen-text {
+            font-size: 1.25rem; /* 20px */
+          }
+        }
+      `}</style>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 relative">
+        <div className="flex items-center justify-between h-16 large-screen-nav relative">
           {/* Logo */}
           <div className="flex-shrink-0 text-2xl font-bold text-indigo-600">
             <img src={logo} alt="Logo" className="w-28 h-10" />
@@ -16,10 +35,10 @@ export default function Navbar() {
 
           {/* Desktop Menu (Centered) */}
           <div className="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
-            <a href="#hero" className="text-gray-700 hover:text-indigo-600">Home</a>
-            <a href="#content" className="text-gray-700 hover:text-indigo-600">About</a>
-            <a href="#investors" className="text-gray-700 hover:text-indigo-600">Services</a>
-            <a href="#footer" className="text-gray-700 hover:text-indigo-600">Contact</a>
+            <a href="#hero" className="text-gray-700 hover:text-indigo-600 large-screen-text">Home</a>
+            <a href="#content" className="text-gray-700 hover:text-indigo-600 large-screen-text">About</a>
+            <a href="#investors" className="text-gray-700 hover:text-indigo-600 large-screen-text">Services</a>
+            <a href="#footer" className="text-gray-700 hover:text-indigo-600 large-screen-text">Contact</a>
           </div>
 
           {/* Mobile Menu Button */}
