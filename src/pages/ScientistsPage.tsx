@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import {
@@ -236,7 +235,7 @@ const ScientistModal = ({
 const ScientistsPage = () => {
   const [selectedScientist, setSelectedScientist] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("scientists");
+  const [activeTab] = useState("scientists");
   const navigate = useNavigate();
 
   const scientists = [

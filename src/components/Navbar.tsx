@@ -7,7 +7,7 @@ export default function Navbar() {
 
   return (
     <nav className="w-full bg-white shadow-md fixed top-0 left-0 z-50">
-      <style jsx>{`
+      <style>{`
         @media (min-width: 1440px) {
           .large-screen-nav {
             height: 5rem; /* 80px */
