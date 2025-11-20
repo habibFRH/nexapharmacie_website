@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import {
   ArrowLeft,
   Heart,
@@ -7,21 +6,125 @@ import {
   Users,
   Zap,
   Award,
-  Target
+  Target,
+  ChevronLeft,
+  ChevronRight,
+  Play
 } from "lucide-react";
-import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
+
+// Footer Component
+const Footer = () => (
+  <footer className="bg-gray-800 text-white py-8 px-4">
+    <div className="max-w-6xl mx-auto text-center">
+      <p>&copy; 2024 Health Revived. All rights reserved.</p>
+    </div>
+  </footer>
+);
+
+// Video Carousel Component
+const VideoCarousel: React.FC = () => {
+  const [currentVideo, setCurrentVideo] = useState(0);
+
+  const videos = [
+    {
+      id: "Qi0rNvJvA-U",
+      title: "Healthcare Innovation",
+      description:
+        "Discover how we're transforming healthcare through innovation"
+    },
+    {
+      id: "gakq02IgIsU",
+      title: "Patient Care Excellence",
+      description: "Experience our commitment to exceptional patient care"
+    }
+  ];
+
+  const nextVideo = () => {
+    setCurrentVideo((prev) => (prev + 1) % videos.length);
+  };
+
+  const prevVideo = () => {
+    setCurrentVideo((prev) => (prev - 1 + videos.length) % videos.length);
+  };
+
+  return (
+    <div className="relative">
+      {/* Main Video Display */}
+      <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-2xl shadow-2xl">
+        <iframe
+          className="absolute top-0 left-0 w-full h-full transition-opacity duration-500"
+          src={`https://www.youtube.com/embed/${videos[currentVideo].id}?rel=0&modestbranding=1`}
+          title={videos[currentVideo].title}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevVideo}
+          className="absolute left-4 top-1/2 -translate-y-1/2 !bg-transparent text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hover:scale-110 z-10"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+
+        <button
+          onClick={nextVideo}
+          className="absolute right-4 top-1/2 -translate-y-1/2 !bg-transparent text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hover:scale-110 z-10"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
+        {/* Video Info Overlay */}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-500 to-transparent p-6 text-white">
+          <h3 className="text-xl font-bold mb-2">
+            {videos[currentVideo].title}
+          </h3>
+          <p className="text-gray-200">{videos[currentVideo].description}</p>
+        </div>
+      </div>
+
+      {/* Thumbnail Navigation */}
+      <div className="flex justify-center gap-4 mt-6">
+        {videos.map((video, index) => (
+          <button
+            key={video.id}
+            onClick={() => setCurrentVideo(index)}
+            className={`relative overflow-hidden rounded-lg transition-all duration-300 ${
+              index === currentVideo
+                ? "ring-4 !ring-blue-500 shadow-xl scale-105"
+                : "opacity-70 hover:opacity-100 hover:scale-105"
+            }`}
+          >
+            <div className="w-32 h-18 !bg-gradient-to-br !from-blue-500 !to-green-500 flex items-center justify-center">
+              <img
+                src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
+                alt={video.title}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                <Play className="w-6 h-6 text-white" />
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const HealthRevivedPage: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-blue-600 to-green-600 text-white py-20 px-4 lg:px-48 md:px-8">
           <div className="absolute inset-0 bg-black/20"></div>
           <div className="relative z-10 max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Health <span className="text-green-300">Revived</span>
+              Home <span className="text-green-300"></span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 leading-relaxed opacity-90">
               Transforming healthcare through innovation, compassion, and
@@ -53,6 +156,18 @@ const HealthRevivedPage: React.FC = () => {
               personalized patient care, ensuring that health and wellness are
               not just restored, but truly revived for generations to come.
             </p>
+
+            {/* Video Embed */}
+            <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-2xl shadow-lg">
+              <iframe
+                className="absolute top-0 left-0 w-full h-full"
+                src="https://www.youtube.com/embed/ilxKxDKvqjg"
+                title="YouTube video"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
           </div>
         </section>
 
@@ -68,7 +183,7 @@ const HealthRevivedPage: React.FC = () => {
                   <Heart className="w-8 h-8 text-blue-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-center text-gray-800 mb-4">
-                  Compassion
+                  EXCELLER PAR LA QUALITé
                 </h3>
                 <p className="text-gray-600 text-center leading-relaxed">
                   Every patient is treated with empathy, respect, and
@@ -82,7 +197,7 @@ const HealthRevivedPage: React.FC = () => {
                   <Shield className="w-8 h-8 text-green-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-center text-gray-800 mb-4">
-                  Excellence
+                  NOS ENGAGEMENTS
                 </h3>
                 <p className="text-gray-600 text-center leading-relaxed">
                   We maintain the highest standards in medical care,
@@ -96,7 +211,7 @@ const HealthRevivedPage: React.FC = () => {
                   <Users className="w-8 h-8 text-purple-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-center text-gray-800 mb-4">
-                  Community
+                  NOS PERSPECTIVES
                 </h3>
                 <p className="text-gray-600 text-center leading-relaxed">
                   Building strong relationships with patients, families, and
@@ -104,6 +219,20 @@ const HealthRevivedPage: React.FC = () => {
                 </p>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Featured Videos Section */}
+        <section className="py-16 bg-gradient-to-r from-slate-50 to-gray-100 px-4 lg:px-48 md:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-4xl font-bold text-gray-800 mb-8">
+              Featured Videos
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed mb-12">
+              Explore our latest insights and patient success stories through
+              our featured video content
+            </p>
+            <VideoCarousel />
           </div>
         </section>
 
@@ -196,38 +325,13 @@ const HealthRevivedPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Call to Action */}
-        {/* <section className="py-16 px-4 lg:px-48 md:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-gray-800 mb-6">
-              Ready to Revive Your Health?
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Take the first step towards a healthier, more vibrant life. Our
-              team of experts is ready to provide you with the personalized care
-              you deserve.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-300 shadow-lg hover:shadow-xl">
-                Schedule Consultation
-              </button>
-              <button className="bg-transparent hover:bg-gray-50 text-gray-800 border-2 border-gray-300 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300">
-                Learn More
-              </button>
-            </div>
-          </div>
-        </section> */}
-
         {/* Back to Home */}
         <section className="py-8 px-4 lg:px-48 md:px-8 bg-gray-50">
           <div className="max-w-4xl mx-auto">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300 group"
-            >
+            <button className="!bg-white inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300 group" onClick={() => navigate("/")}>
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
               Back to Home
-            </Link>
+            </button>
           </div>
         </section>
       </main>

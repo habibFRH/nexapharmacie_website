@@ -46,12 +46,12 @@ const ContentSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            <button className="!bg-blue-600 hover:!bg-blue-700 !text-white font-semibold py-3 px-6 sm:px-8 !rounded-3xl transition-colors duration-300 w-full sm:w-auto text-center">
+            {/* <button className="!bg-blue-600 hover:!bg-blue-700 !text-white font-semibold py-3 px-6 sm:px-8 !rounded-3xl transition-colors duration-300 w-full sm:w-auto text-center">
               Schedule a demo
             </button>
             <button className="!bg-transparent !border-2 !border-blue-600 !text-blue-600 hover:!bg-blue-50 font-semibold py-3 px-6 sm:px-8 !rounded-3xl transition-colors duration-300 w-full sm:w-auto text-center">
               Find out more
-            </button>
+            </button> */}
           </motion.div>
         </motion.div>
 

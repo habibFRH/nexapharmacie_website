@@ -180,7 +180,7 @@ const SliderSection: React.FC = () => {
                   (currentSlide - 1 + testimonials.length) % testimonials.length
                 )
               }
-              className="absolute left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 !bg-gray-300 hover:!bg-gray-50 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+              className="absolute left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 !bg-gray-300 hover:!bg-blue-100 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
             >
               <svg
                 className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors"
@@ -200,7 +200,7 @@ const SliderSection: React.FC = () => {
               onClick={() =>
                 goToSlide((currentSlide + 1) % testimonials.length)
               }
-              className="absolute right-6 top-1/2 transform -translate-y-1/2 w-12 h-12 !bg-gray-300 hover:!bg-gray-50 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
+              className="absolute right-6 top-1/2 transform -translate-y-1/2 w-12 h-12 !bg-gray-300 hover:!bg-blue-100 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 group"
             >
               <svg
                 className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors"

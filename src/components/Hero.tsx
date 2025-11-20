@@ -142,7 +142,7 @@ const HeroSection: React.FC = () => {
         <div className="flex-1 lg:flex-1 h-64 md:h-80 lg:h-full">
           <HeroCard
             image={healthImage}
-            text="Health Revived"
+            text="Acceuil"
             alt="Health Revived Section"
             to="/health-revived"
             initial={{ opacity: 0, x: -100 }}
@@ -161,7 +161,7 @@ const HeroSection: React.FC = () => {
           <div className="h-48 md:h-64 lg:flex-[3]">
             <HeroCard
               image={scientists}
-              text="Top-notch healthcare equipments & Scientists"
+              text="Nous connaitre"
               alt="Healthcare Equipment and Scientists"
               to="/scientists"
               initial={{ opacity: 0, y: -80 }}
@@ -199,7 +199,7 @@ const HeroSection: React.FC = () => {
               <div className="flex-1 lg:flex-[6] h-40 md:h-48 lg:h-auto">
                 <HeroCard
                   image={bacterie}
-                  text="Nos RECHERCHES"
+                  text="Nos PRODUITS"
                   alt="Research Section"
                   to="/research"
                   initial={{ opacity: 0, x: 80 }}
@@ -208,7 +208,7 @@ const HeroSection: React.FC = () => {
                   titlePosition="bottom-left"
                   titleSize="lg"
                   titleWidth="w-24 max-w-full" // Custom width for Research
-                  boldWords={["RECHERCHES"]}
+                  boldWords={["PRODUITS"]}
                   className=""
                 />
               </div>
@@ -217,7 +217,7 @@ const HeroSection: React.FC = () => {
               <div className="flex-1 lg:flex-[4] h-36 md:h-40 lg:h-auto">
                 <HeroCard
                   image={nanodev}
-                  text="Le Monde du NANO-DEV"
+                  text="Nous contacter"
                   alt="Nanotechnology Section"
                   to="/nano-dev"
                   initial={{ opacity: 0, x: 80 }}
