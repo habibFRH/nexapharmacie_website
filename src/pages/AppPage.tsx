@@ -51,11 +51,11 @@ const AppPage: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-4">
-                  <button className="bg-black text-white px-8 py-4 rounded-xl font-semibold hover:bg-gray-800 transition-colors duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
+                  <button className="!bg-black text-white px-8 py-4 rounded-xl font-semibold hover:!bg-gray-800 transition-colors duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
                     <Smartphone className="w-6 h-6" />
                     App Store
                   </button>
-                  <button className="bg-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-700 transition-colors duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
+                  <button className="!bg-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:!bg-green-700 transition-colors duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
                     <Download className="w-6 h-6" />
                     Google Play
                   </button>
@@ -324,11 +324,11 @@ const AppPage: React.FC = () => {
               100 000 utilisateurs satisfaits.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <button className="bg-black text-white px-8 py-4 rounded-xl font-semibold hover:bg-gray-800 transition-colors duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
+              <button className="!bg-black text-white px-8 py-4 rounded-xl font-semibold hover:!bg-gray-800 transition-colors duration-300 flex items-center gap-3 shadow-lg hover:!shadow-xl">
                 <Smartphone className="w-6 h-6" />
                 Télécharger sur App Store
               </button>
-              <button className="bg-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-green-700 transition-colors duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
+              <button className="!bg-green-600 text-white px-8 py-4 rounded-xl font-semibold hover:!bg-green-700 transition-colors duration-300 flex items-center gap-3 shadow-lg hover:shadow-xl">
                 <Download className="w-6 h-6" />
                 Télécharger sur Google Play
               </button>
