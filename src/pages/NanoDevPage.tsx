@@ -103,7 +103,7 @@ const ContactPage: React.FC = () => {
               </div>
               <button
                 type="submit"
-                className="w-full text-black flex items-center justify-center gap-2 bg-cyan-600 text-white font-semibold py-3 rounded-lg hover:bg-cyan-700 transition-all"
+                className="w-full text-black flex items-center justify-center gap-2 !bg-cyan-600 font-semibold py-3 rounded-lg hover:bg-cyan-700 transition-all"
               >
                 <Send className="w-5 h-5" />
                 Envoyer
