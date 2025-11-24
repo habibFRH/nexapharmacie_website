@@ -9,8 +9,6 @@ import {
   AlertTriangle
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import productRange1 from "../assets/Nos gammes de Medcs 01.png";
-import productRange2 from "../assets/Nos gammes de Medcs 02.png";
 
 const Footer = () => (
   <footer className="bg-gray-800 text-white py-8 px-4 lg:px-48 md:px-8">
