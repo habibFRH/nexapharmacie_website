@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import healthImage from "../assets/health.png";
+import healthImage from "../assets/Nos Produits.jpg";
 import phone from "../assets/phone.png";
 import scientists from "../assets/scientist.png";
 import bacterie from "../assets/bacterie.png";
