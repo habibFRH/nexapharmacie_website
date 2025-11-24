@@ -9,6 +9,21 @@ import {
   AlertTriangle
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+// Import all images properly for production builds
+import bacterieImg from "../assets/bacterie.png";
+import healthImg from "../assets/health.png";
+import catafenacImg from "../assets/catafenac.png";
+import dipronadImg from "../assets/dipronad.png";
+import kenacortylImg from "../assets/kenacortyl.png";
+import celestinadImg from "../assets/celestinad.png";
+import methylImg from "../assets/methyl.png";
+import plandixImg from "../assets/plandix.png";
+import levospasmeImg from "../assets/levospasme.png";
+import pepsulenImg from "../assets/pepsulen.png";
+import prednicortImg from "../assets/prednicort.png";
+import ubactiveImg from "../assets/ubactive.png";
+import productRange1 from "../assets/Nos gammes de Medcs 01.png";
+import productRange2 from "../assets/Nos gammes de Medcs 02.png";
 
 const Footer = () => (
   <footer className="bg-gray-800 text-white py-8 px-4 lg:px-48 md:px-8">
@@ -218,7 +233,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1-2 comprimés",
       duration: "4-6 heures",
       price: "450 DA",
-      image: "/src/assets/bacterie.png"
+      image: bacterieImg
     },
     {
       name: "NADOL Rapid",
@@ -228,7 +243,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1 comprimé",
       duration: "6-8 heures",
       price: "320 DA",
-      image: "/src/assets/health.png"
+      image: healthImg
     },
     {
       name: "NADOL Forte",
@@ -238,7 +253,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1 comprimé",
       duration: "6 heures",
       price: "380 DA",
-      image: "/src/assets/catafenac.png"
+      image: catafenacImg
     },
     {
       name: "NADOL Effervescent",
@@ -248,7 +263,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1 comprimé",
       duration: "4-6 heures",
       price: "420 DA",
-      image: "/src/assets/dipronad.png"
+      image: dipronadImg
     }
   ];
 
@@ -262,7 +277,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1 gélule x3/jour",
       duration: "7-10 jours",
       price: "680 DA",
-      image: "/src/assets/kenacortyl.png"
+      image: kenacortylImg
     },
     {
       name: "NADICILLINE Duo",
@@ -272,7 +287,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1 comprimé x2/jour",
       duration: "7 jours",
       price: "890 DA",
-      image: "/src/assets/celestinad.png"
+      image: celestinadImg
     },
     {
       name: "NADICILLINE Suspension",
@@ -282,7 +297,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "5-10ml x3/jour",
       duration: "7 jours",
       price: "520 DA",
-      image: "/src/assets/methyl.png"
+      image: methylImg
     },
     {
       name: "NADICILLINE Duo",
@@ -292,7 +307,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "5-10ml x3/jour",
       duration: "7 jours",
       price: "520 DA",
-      image: "/src/assets/dipronad.png"
+      image: dipronadImg
     }
   ];
 
@@ -306,7 +321,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1 comprimé/jour",
       duration: "Traitement continu",
       price: "750 DA",
-      image: "/src/assets/plandix.png"
+      image: plandixImg
     },
     {
       name: "NADIMIND",
@@ -316,7 +331,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1 comprimé/jour",
       duration: "Traitement prolongé",
       price: "1250 DA",
-      image: "/src/assets/levospasme.png"
+      image: levospasmeImg
     },
     {
       name: "NADIGEST",
@@ -326,7 +341,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1 gélule/jour",
       duration: "4-8 semaines",
       price: "580 DA",
-      image: "/src/assets/pepsulen.png"
+      image: pepsulenImg
     },
     {
       name: "NADIreспир",
@@ -336,7 +351,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1-2 bouffées",
       duration: "Selon besoin",
       price: "920 DA",
-      image: "/src/assets/prednicort.png"
+      image: prednicortImg
     },
     {
       name: "NADIVIT D3",
@@ -346,7 +361,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1 gélule/jour",
       duration: "3 mois",
       price: "420 DA",
-      image: "/src/assets/ubactive.png"
+      image: ubactiveImg
     },
     {
       name: "NADICALM",
@@ -356,7 +371,7 @@ const MedicinesPage: React.FC = () => {
       dosage: "1/2 à 1 comprimé",
       duration: "Traitement court",
       price: "680 DA",
-      image: "/src/assets/catafenac.png"
+      image: catafenacImg
     }
   ];
 
@@ -464,6 +479,38 @@ const MedicinesPage: React.FC = () => {
               medicines={antibioticMedicines}
               title="Gamme Antibiotiques NADICILLINE"
             />
+
+            {/* Product Range Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+              <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+                <div className="relative">
+                  <img
+                    src={productRange1}
+                    alt="Nos gammes de médicaments 1"
+                    className="w-full h-64 object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = `https://via.placeholder.com/600x400/3B82F6/FFFFFF?text=${encodeURIComponent(
+                        "Nos gammes de médicaments 1"
+                      )}`;
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+                <div className="relative">
+                  <img
+                    src={productRange2}
+                    alt="Nos gammes de médicaments 2"
+                    className="w-full h-64 object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = `https://via.placeholder.com/600x400/3B82F6/FFFFFF?text=${encodeURIComponent(
+                        "Nos gammes de médicaments 2"
+                      )}`;
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
