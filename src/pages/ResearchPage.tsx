@@ -466,38 +466,6 @@ const MedicinesPage: React.FC = () => {
               medicines={antibioticMedicines}
               title="Gamme Antibiotiques NADICILLINE"
             />
-
-            {/* Product Range Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-              <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
-                <div className="relative">
-                  <img
-                    src={productRange1}
-                    alt="Nos gammes de médicaments 1"
-                    className="w-full h-64 object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://via.placeholder.com/600x400/3B82F6/FFFFFF?text=${encodeURIComponent(
-                        "Nos gammes de médicaments 1"
-                      )}`;
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
-                <div className="relative">
-                  <img
-                    src={productRange2}
-                    alt="Nos gammes de médicaments 2"
-                    className="w-full h-64 object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://via.placeholder.com/600x400/3B82F6/FFFFFF?text=${encodeURIComponent(
-                        "Nos gammes de médicaments 2"
-                      )}`;
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
