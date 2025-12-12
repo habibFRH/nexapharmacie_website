@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Facebook,  Linkedin, Instagram } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
@@ -35,16 +35,22 @@ const Footer: React.FC = () => {
         <div>
           <h3 className="text-lg font-semibold text-white mb-4">Follow Us</h3>
           <div className="flex space-x-4">
-            <a href="#" className="hover:text-indigo-400">
+            <a
+              href="https://www.facebook.com/profile.php?id=100057643749919"
+              className="hover:text-indigo-400"
+            >
               <Facebook />
             </a>
-            <a href="#" className="hover:text-indigo-400">
-              <Twitter />
-            </a>
-            <a href="#" className="hover:text-indigo-400">
+            <a
+              href="https://www.linkedin.com/company/nadpharmadic-pharmaceutical-industry/?originalSubdomain=dz"
+              className="hover:text-indigo-400"
+            >
               <Linkedin />
             </a>
-            <a href="#" className="hover:text-indigo-400">
+            <a
+              href="https://www.instagram.com/nadpharmadic?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              className="hover:text-indigo-400"
+            >
               <Instagram />
             </a>
           </div>
