@@ -22,8 +22,8 @@ import levospasmeImg from "../assets/levospasme.png";
 import pepsulenImg from "../assets/pepsulen.png";
 import prednicortImg from "../assets/prednicort.png";
 import ubactiveImg from "../assets/ubactive.png";
-import productRange1 from "../assets/Nos gammes de Medcs 01.png";
-import productRange2 from "../assets/Nos gammes de Medcs 02.png";
+// import productRange1 from "../assets/Nos gammes de Medcs 01.png";
+// import productRange2 from "../assets/Nos gammes de Medcs 02.png";
 
 const Footer = () => (
   <footer className="bg-gray-800 text-white py-8 px-4 lg:px-48 md:px-8">
@@ -74,13 +74,13 @@ const MedicineCard = ({ medicine }: { medicine: any }) => (
 
       <p className="text-gray-600 text-sm">{medicine.description}</p>
 
-      <div className="pt-3 border-t border-gray-100">
+      {/* <div className="pt-3 border-t border-gray-100">
         <div className="flex items-center text-center justify-center">
           <button className="!bg-blue-600 hover:!bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
             Lire la notice
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   </div>
 );
@@ -191,7 +191,7 @@ const SimpleCarousel = ({
               </div>
             </div>
 
-            <div className="pt-4 border-t border-gray-100">
+            {/* <div className="pt-4 border-t border-gray-100">
               <div className="flex items-center justify-between">
                 <span className="text-2xl font-bold text-blue-600">
                   
@@ -200,7 +200,7 @@ const SimpleCarousel = ({
                   Lire la notice
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -481,7 +481,7 @@ const MedicinesPage: React.FC = () => {
             />
 
             {/* Product Range Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
               <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
                 <div className="relative">
                   <img
@@ -510,7 +510,7 @@ const MedicinesPage: React.FC = () => {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
 

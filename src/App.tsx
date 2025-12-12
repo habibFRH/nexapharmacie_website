@@ -5,7 +5,7 @@ import Hero from './components/Hero';
 import ContentSection from './components/ContentSection';
 import ForInvestors from './components/ForInvestors';
 import DiscoverStories from './components/DiscoverStories';
-import SliderSection from './components/SliderSection';
+// import SliderSection from './components/SliderSection';
 import Footer from './components/Footer';
 import HealthRevivedPage from './pages/HealthRevivedPage';
 import ScientistsPage from './pages/ScientistsPage';
@@ -27,7 +27,7 @@ function App() {
                 <ContentSection />
                 <ForInvestors />
                 <DiscoverStories />
-                <SliderSection />
+                {/* <SliderSection /> */}
                 <Footer />
               </>
             }

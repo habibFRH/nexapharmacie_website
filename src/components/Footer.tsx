@@ -9,14 +9,14 @@ const Footer: React.FC = () => {
         <div>
           <h2 className="text-2xl font-bold text-white">Nad pharmadic</h2>
           <p className="mt-4 text-gray-400">
-            Building modern solutions for businesses worldwide. Grow with
-            innovation, trust, and technology.
+            Nadpharmadic vous accompagne avec des produits sûrs, pensés pour
+            répondre à vos besoins et améliorer votre qualité de vie.
           </p>
         </div>
 
         {/* Middle - Links */}
         <div className="flex flex-col space-y-3">
-          <h3 className="text-lg font-semibold text-white">Quick Links</h3>
+          {/* <h3 className="text-lg font-semibold text-white">Quick Links</h3>
           <a href="#" className="hover:text-indigo-400">
             Home
           </a>
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           </a>
           <a href="#" className="hover:text-indigo-400">
             Contact
-          </a>
+          </a> */}
         </div>
 
         {/* Right - Social Media */}

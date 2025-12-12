@@ -22,7 +22,7 @@ const ContentSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            A brighter future in molecular science
+            Un avenir plus radieux dans les sciences moléculaires
           </motion.h1>
 
           {/* Paragraph */}
@@ -33,9 +33,9 @@ const ContentSection: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
           >
-            At Beam Labs we're pushing the boundaries of molecular understanding,
-            researchers are unlocking possibilities for sustainable technologies
-            and personalized therapies.
+            Chez NADPHARMADIC, nous repoussons les limites de la compréhension moléculaire.
+            Nos chercheurs débloquent des possibilités pour des technologies durables
+            et des thérapies personnalisées.
           </motion.p>
 
           {/* Buttons */}
@@ -65,7 +65,7 @@ const ContentSection: React.FC = () => {
         >
           <img
             src={contentImage}
-            alt="Scientist in laboratory"
+            alt="Scientifique en laboratoire"
             className="w-full h-full object-cover"
           />
         </motion.div>

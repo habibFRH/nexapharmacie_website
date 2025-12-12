@@ -25,7 +25,7 @@ export default function Navbar() {
           }
         }
       `}</style>
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 large-screen-nav relative">
           {/* Logo */}
@@ -35,10 +35,30 @@ export default function Navbar() {
 
           {/* Desktop Menu (Centered) */}
           <div className="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
-            <a href="#hero" className="text-gray-700 hover:text-indigo-600 large-screen-text">Home</a>
-            <a href="#content" className="text-gray-700 hover:text-indigo-600 large-screen-text">About</a>
-            <a href="#investors" className="text-gray-700 hover:text-indigo-600 large-screen-text">Services</a>
-            <a href="#footer" className="text-gray-700 hover:text-indigo-600 large-screen-text">Contact</a>
+            <a
+              href="#hero"
+              className="text-gray-700 hover:text-indigo-600 large-screen-text"
+            >
+              Acceuil
+            </a>
+            <a
+              href="#content"
+              className="text-gray-700 hover:text-indigo-600 large-screen-text"
+            >
+              A propos
+            </a>
+            <a
+              href="#historique"
+              className="text-gray-700 hover:text-indigo-600 large-screen-text"
+            >
+              Historique
+            </a>
+            <a
+              href="#footer"
+              className="text-gray-700 hover:text-indigo-600 large-screen-text"
+            >
+              Contact
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -47,7 +67,11 @@ export default function Navbar() {
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-indigo-600 focus:outline-none !bg-white"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
         </div>
@@ -57,10 +81,30 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white shadow-md">
           <div className="px-4 pt-2 pb-4 space-y-2">
-            <a href="#hero" className="block text-gray-700 hover:text-indigo-600">Home</a>
-            <a href="#content" className="block text-gray-700 hover:text-indigo-600">About</a>
-            <a href="#investors" className="block text-gray-700 hover:text-indigo-600">Services</a>
-            <a href="#footer" className="block text-gray-700 hover:text-indigo-600">Contact</a>
+            <a
+              href="#hero"
+              className="block text-gray-700 hover:text-indigo-600"
+            >
+              Acceuil
+            </a>
+            <a
+              href="#content"
+              className="block text-gray-700 hover:text-indigo-600"
+            >
+              A propos
+            </a>
+            <a
+              href="#historique"
+              className="block text-gray-700 hover:text-indigo-600"
+            >
+              Historique
+            </a>
+            <a
+              href="#footer"
+              className="block text-gray-700 hover:text-indigo-600"
+            >
+              Contact
+            </a>
           </div>
         </div>
       )}

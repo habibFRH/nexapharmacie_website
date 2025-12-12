@@ -40,7 +40,7 @@ const DiscoverStories: React.FC = () => {
           }`}
         >
           <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-indigo-800 to-blue-800 bg-clip-text text-transparent mb-6 animate-pulse">
-            Discover Great Stories About Science
+            Découvrez de Grandes Histoires sur la Science
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-indigo-500 to-blue-500 mx-auto mb-6 rounded-full animate-pulse"></div>
         </div>
@@ -53,8 +53,8 @@ const DiscoverStories: React.FC = () => {
           }`}
         >
           <p className="text-xl text-gray-600 mb-16 max-w-3xl mx-auto leading-relaxed">
-            Dive into inspiring stories and groundbreaking discoveries shaping
-            the future of science and technology.
+            Plongez dans des histoires inspirantes et des découvertes révolutionnaires qui façonnent
+            l'avenir de la science et de la technologie.
           </p>
         </div>
 
@@ -79,11 +79,11 @@ const DiscoverStories: React.FC = () => {
             <div className="p-8 text-left">
               <div className="w-12 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mb-4 rounded-full group-hover:w-16 transition-all duration-300"></div>
               <h3 className="text-2xl font-bold text-indigo-600 mb-3 group-hover:text-indigo-700 transition-colors duration-300">
-                The Future of Space Exploration
+                L'Avenir de l'Exploration Spatiale
               </h3>
               <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                How new technologies are pushing the boundaries of human
-                exploration beyond Earth.
+                Comment les nouvelles technologies repoussent les limites de l'exploration
+                humaine au-delà de la Terre.
               </p>
             </div>
           </div>
@@ -107,11 +107,11 @@ const DiscoverStories: React.FC = () => {
             <div className="p-8 text-left">
               <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mb-4 rounded-full group-hover:w-16 transition-all duration-300"></div>
               <h3 className="text-2xl font-bold text-indigo-600 mb-3 group-hover:text-indigo-700 transition-colors duration-300">
-                Breakthroughs in Medical Science
+                Percées en Sciences Médicales
               </h3>
               <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                Discover the latest innovations improving health and extending
-                human life.
+                Découvrez les dernières innovations qui améliorent la santé et prolongent
+                la vie humaine.
               </p>
             </div>
           </div>
@@ -135,11 +135,11 @@ const DiscoverStories: React.FC = () => {
             <div className="p-8 text-left">
               <div className="w-12 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mb-4 rounded-full group-hover:w-16 transition-all duration-300"></div>
               <h3 className="text-2xl font-bold text-indigo-600 mb-3 group-hover:text-indigo-700 transition-colors duration-300">
-                AI and the Future of Research
+                L'IA et l'Avenir de la Recherche
               </h3>
               <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                How artificial intelligence is transforming scientific research
-                and discovery.
+                Comment l'intelligence artificielle transforme la recherche scientifique
+                et la découverte.
               </p>
             </div>
           </div>
@@ -153,7 +153,7 @@ const DiscoverStories: React.FC = () => {
               : "transform translate-y-8 opacity-0"
           }`}
         >
-          <button className="group px-8 py-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto">
+          {/* <button className="group px-8 py-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 mx-auto">
             <span>Explore All Stories</span>
             <svg
               className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300"
@@ -168,7 +168,7 @@ const DiscoverStories: React.FC = () => {
                 d="M13 7l5 5-5 5M6 12h12"
               />
             </svg>
-          </button>
+          </button> */}
         </div>
       </div>
     </section>
