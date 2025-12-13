@@ -12,8 +12,37 @@ import ScientistsPage from './pages/ScientistsPage';
 import AppPage from './pages/AppPage';
 import ResearchPage from './pages/ResearchPage';
 import NanoDevPage from './pages/NanoDevPage';
+import VideoIntroSection from "./components/VideoIntroSection";
+import { useEffect } from 'react';
+
 
 function App() {
+  useEffect(() => {
+    // Disable right click
+    const disableRightClick = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+
+    // Disable inspect shortcuts
+    const disableShortcuts = (e: KeyboardEvent) => {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I", "C", "J"].includes(e.key)) ||
+        (e.ctrlKey && e.key === "U")
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener("contextmenu", disableRightClick);
+    document.addEventListener("keydown", disableShortcuts);
+
+    return () => {
+      document.removeEventListener("contextmenu", disableRightClick);
+      document.removeEventListener("keydown", disableShortcuts);
+    };
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="flex flex-col">
@@ -24,6 +53,7 @@ function App() {
               <>
                 <Navbar />
                 <Hero />
+                <VideoIntroSection />
                 <ContentSection />
                 <ForInvestors />
                 <DiscoverStories />
