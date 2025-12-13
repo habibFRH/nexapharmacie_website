@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import healthImage from "../assets/Nos Produits.jpg";
@@ -9,7 +9,7 @@ import bacterie from "../assets/bacterie.png";
 import nanodev from "../assets/nanodev.png";
 
 interface HeroCardProps {
-  image: string;
+  image: string | string[]; // Can be a single image or an array of images
   text: string;
   alt: string;
   to: string;
@@ -18,11 +18,11 @@ interface HeroCardProps {
   animate?: any;
   transition?: any;
   titlePosition?:
-    | "bottom-left"
-    | "top-left"
-    | "center"
-    | "bottom-center"
-    | "top-center";
+  | "bottom-left"
+  | "top-left"
+  | "center"
+  | "bottom-center"
+  | "top-center";
   titleSize?: "sm" | "md" | "lg" | "xl";
   titleWidth?: string; // Custom width for title
   boldWords?: string[]; // Array of words to make bold
@@ -95,6 +95,19 @@ const HeroCard: React.FC<HeroCardProps> = ({
     return <span dangerouslySetInnerHTML={{ __html: processedText }} />;
   };
 
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = Array.isArray(image) ? image : [image];
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
     <Link to={to} className="block h-full">
       <motion.div
@@ -105,22 +118,26 @@ const HeroCard: React.FC<HeroCardProps> = ({
         aria-label={alt}
         className={`relative rounded-lg flex flex-col ${getPositionClasses()} p-3 overflow-hidden group focus:outline-none focus:ring-2 focus:ring-blue-600 h-full ${className}`}
       >
+        <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-105">
+          {images.map((img, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${index === currentImageIndex ? "opacity-100" : "opacity-0"
+                }`}
+              style={{ backgroundImage: `url(${img})` }}
+            />
+          ))}
+        </div>
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105"
-          style={{ backgroundImage: `url(${image})` }}
-        ></div>
-        <div
-          className={`absolute inset-0 rounded-lg ${
-            image === bacterie
+          className={`absolute inset-0 rounded-lg ${images[currentImageIndex] === bacterie
               ? "bg-gradient-to-t from-green-500/80 to-transparent"
               : "bg-black/20"
-          }`}
+            }`}
         ></div>
         <div className="relative">
           <h2
-            className={`text-white ${getSizeClasses()} font-bold drop-shadow-lg ${
-              titleWidth || ""
-            }`}
+            className={`text-white ${getSizeClasses()} font-bold drop-shadow-lg ${titleWidth || ""
+              }`}
           >
             {renderTextWithBold()}
           </h2>
@@ -141,7 +158,7 @@ const HeroSection: React.FC = () => {
         {/* Health Revived - Full width on mobile/tablet, left column on desktop */}
         <div className="flex-1 lg:flex-1 h-64 md:h-80 lg:h-full">
           <HeroCard
-            image={healthImage}
+            image={[healthImage, scientists, phone, bacterie]}
             text="Acceuil"
             alt="Health Revived Section"
             to="/health-revived"
