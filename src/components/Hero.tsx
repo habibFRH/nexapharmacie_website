@@ -7,6 +7,8 @@ import phone from "../assets/phone.png";
 import scientists from "../assets/scientist.png";
 import bacterie from "../assets/bacterie.png";
 import nanodev from "../assets/nanodev.png";
+import img1 from "../assets/img1.png";
+import img2 from "../assets/img2.png";
 
 interface HeroCardProps {
   image: string | string[]; // Can be a single image or an array of images
@@ -158,7 +160,7 @@ const HeroSection: React.FC = () => {
         {/* Health Revived - Full width on mobile/tablet, left column on desktop */}
         <div className="flex-1 lg:flex-1 h-64 md:h-80 lg:h-full">
           <HeroCard
-            image={[healthImage, scientists, phone, bacterie]}
+            image={[healthImage, img1 , img2]}
             text="Acceuil"
             alt="Health Revived Section"
             to="/health-revived"
