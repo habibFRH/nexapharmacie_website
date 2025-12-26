@@ -1,59 +1,45 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment, Center } from "@react-three/drei";
-import modelPath from "../assets/model3.glb";
-
-// Preload the model for smoother initial render
-useGLTF.preload(modelPath);
-
-function Model() {
-    const { scene } = useGLTF(modelPath);
-    // Using primitive to render the loaded GLTF scene
-    return <primitive object={scene} />;
-}
 
 const VideoIntroSection: React.FC = () => {
     return (
         <section className="w-full min-h-screen bg-black text-white">
             <div className="flex flex-col lg:flex-row w-full min-h-screen">
 
-                {/* Left – 3D Model */}
+                {/* Left – 3D Model Embed */}
                 <motion.div
-                    className="w-full lg:w-1/2 h-[50vh] lg:h-auto relative cursor-grab active:cursor-grabbing"
+                    className="w-full lg:w-1/2 h-[50vh] lg:h-auto relative"
                     initial={{ opacity: 0, x: -80 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1 }}
                     viewport={{ once: true }}
                 >
-                    <Canvas shadows camera={{ position: [15, 2, 50], fov: 45 }}>
-                        <Suspense fallback={null}>
-                            <Center>
-                                <group rotation={[0, Math.PI, 0]}>
-                                    <Model />
-                                </group>
-                            </Center>
-                            <Environment preset="city" />
-                        </Suspense>
-
-                        <OrbitControls
-                            enableZoom={true}
-                            autoRotate
-                            autoRotateSpeed={2}
-                            enablePan={false}
-                        />
-                    </Canvas>
+                    <div className="sketchfab-embed-wrapper w-full h-full relative overflow-hidden">
+                        <iframe
+                            title="All Nad Habib"
+                            className="absolute top-[-20%] left-0 w-full h-[140%]"
+                            frameBorder="0"
+                            allowFullScreen
+                            // @ts-ignore
+                            mozallowfullscreen="true"
+                            // @ts-ignore
+                            webkitallowfullscreen="true"
+                            allow="autoplay; fullscreen; xr-spatial-tracking"
+                            src="https://sketchfab.com/models/3903356487a84d6eab7b8666f84a2c1d/embed?ui_infos=0&ui_controls=0&ui_watermark=0&autostart=1"
+                        >
+                        </iframe>
+                    </div>
                 </motion.div>
 
                 {/* Right – Text */}
                 <motion.div
-                    className="w-full lg:w-1/2 flex flex-col justify-center p-6 sm:p-8 md:p-10 lg:p-12"
+                    className="w-full bg-white lg:w-1/2 flex flex-col justify-center p-6 sm:p-8 md:p-10 lg:p-12"
                     initial={{ opacity: 0, x: 80 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 1, delay: 0.2 }}
                     viewport={{ once: true }}
                 >
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-4 text-black">
                         L’innovation au cœur de la science
                     </h2>
 
