@@ -22,8 +22,16 @@ import levospasmeImg from "../assets/levospasme.png";
 import pepsulenImg from "../assets/pepsulen.png";
 import prednicortImg from "../assets/prednicort.png";
 import ubactiveImg from "../assets/ubactive.png";
-// import productRange1 from "../assets/Nos gammes de Medcs 01.png";
-// import productRange2 from "../assets/Nos gammes de Medcs 02.png";
+
+// Import images from nadpic
+import img15 from "../assets/nadpic/15.png";
+import img16 from "../assets/nadpic/16.png";
+import img17 from "../assets/nadpic/17.png";
+import img18 from "../assets/nadpic/18.png";
+import img19 from "../assets/nadpic/19.png";
+import img20 from "../assets/nadpic/20.png";
+import img21 from "../assets/nadpic/21.png";
+import img22 from "../assets/nadpic/22.png";
 
 const Footer = () => (
   <footer className="bg-gray-800 text-white py-8 px-4 lg:px-48 md:px-8">
@@ -49,17 +57,16 @@ const MedicineCard = ({ medicine }: { medicine: any }) => (
       />
       <div className="absolute top-2 right-2">
         <span
-          className={`px-2 py-1 rounded-full text-xs font-medium ${
-            medicine.category === "Cardiologie"
-              ? "bg-red-100 text-red-800"
-              : medicine.category === "Neurologie"
+          className={`px-2 py-1 rounded-full text-xs font-medium ${medicine.category === "Cardiologie"
+            ? "bg-red-100 text-red-800"
+            : medicine.category === "Neurologie"
               ? "bg-purple-100 text-purple-800"
               : medicine.category === "Analgésique"
-              ? "bg-blue-100 text-blue-800"
-              : medicine.category === "Antibiotique"
-              ? "bg-green-100 text-green-800"
-              : "bg-gray-100 text-gray-800"
-          }`}
+                ? "bg-blue-100 text-blue-800"
+                : medicine.category === "Antibiotique"
+                  ? "bg-green-100 text-green-800"
+                  : "bg-gray-100 text-gray-800"
+            }`}
         >
           {medicine.category}
         </span>
@@ -73,14 +80,6 @@ const MedicineCard = ({ medicine }: { medicine: any }) => (
       </div>
 
       <p className="text-gray-600 text-sm">{medicine.description}</p>
-
-      {/* <div className="pt-3 border-t border-gray-100">
-        <div className="flex items-center text-center justify-center">
-          <button className="!bg-blue-600 hover:!bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
-            Lire la notice
-          </button>
-        </div>
-      </div> */}
     </div>
   </div>
 );
@@ -88,10 +87,12 @@ const MedicineCard = ({ medicine }: { medicine: any }) => (
 // Simple Carousel Component (Image left, Info right)
 const SimpleCarousel = ({
   medicines,
-  title
+  title,
+  variant = "modern"
 }: {
   medicines: any[];
   title: string;
+  variant?: "modern" | "thin";
 }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = medicines.length;
@@ -106,51 +107,125 @@ const SimpleCarousel = ({
 
   const currentMedicine = medicines[currentSlide];
 
+  if (variant === "thin") {
+    return (
+      <div className="mb-12">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-bold text-gray-800 tracking-tight">{title}</h3>
+          <div className="flex space-x-2">
+            <button
+              onClick={prevSlide}
+              className="p-1.5 rounded-full bg-gray-50 border !border-black text-black hover:text-blue-600 transition-colors"
+              disabled={totalSlides <= 1}
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="p-1.5 rounded-full bg-gray-50 border !border-black text-black hover:text-blue-600 transition-colors"
+              disabled={totalSlides <= 1}
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="flex flex-col md:flex-row h-auto md:h-56">
+            <div className="w-full md:w-[55%] bg-gray-50/50 flex items-center justify-center p-4 relative">
+              <img
+                src={currentMedicine.image}
+                alt={currentMedicine.name}
+                className="max-w-full max-h-full object-contain drop-shadow-md"
+              />
+              <span className="absolute top-2 left-2 px-2 py-0.5 bg-green-100 text-green-700 rounded-full text-[10px] font-bold uppercase tracking-wider">
+                {currentMedicine.category}
+              </span>
+            </div>
+            <div className="flex-1 p-6 flex flex-col justify-center">
+              <h4 className="text-xl font-bold text-gray-900 mb-1">{currentMedicine.name}</h4>
+              <p className="text-xs text-blue-600/70 font-medium italic mb-3">{currentMedicine.scientificName}</p>
+              <p className="text-sm text-gray-500 line-clamp-2 font-light leading-relaxed">
+                {currentMedicine.description}
+              </p>
+
+              <div className="flex items-center gap-6 mt-4">
+                <div className="flex items-center gap-2">
+                  <Pill className="w-3.5 h-3.5 text-blue-400" />
+                  <span className="text-xs font-semibold text-gray-700">{currentMedicine.dosage}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Clock className="w-3.5 h-3.5 text-green-400" />
+                  <span className="text-xs font-semibold text-gray-700">{currentMedicine.duration}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {totalSlides > 1 && (
+          <div className="flex justify-center mt-4 gap-1.5">
+            {Array.from({ length: totalSlides }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`h-1 transition-all duration-300 rounded-full ${index === currentSlide ? "w-6 bg-blue-500" : "w-1.5 bg-gray-200"
+                  }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
-    <div className="mb-12">
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-2xl font-bold text-gray-800">{title}</h3>
-        <div className="flex space-x-2">
+    <div className="mb-20">
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h3 className="text-3xl font-bold text-gray-900 tracking-tight">{title}</h3>
+          <div className="h-1 w-20 bg-blue-600 mt-2 rounded-full"></div>
+        </div>
+        <div className="flex space-x-3">
           <button
             onClick={prevSlide}
-            className="p-2 rounded-full !bg-gray-100 hover:!bg-gray-200 transition-colors"
+            className="w-12 h-12 flex items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm hover:shadow-md hover:bg-gray-50 transition-all text-gray-600"
             disabled={totalSlides <= 1}
           >
-            <ChevronLeft className="w-5 h-5 text-gray-600" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="p-2 rounded-full !bg-gray-100 hover:!bg-gray-200 transition-colors"
+            className="w-12 h-12 flex items-center justify-center rounded-full bg-white border border-gray-100 shadow-sm hover:shadow-md hover:bg-gray-50 transition-all text-gray-600"
             disabled={totalSlides <= 1}
           >
-            <ChevronRight className="w-5 h-5 text-gray-600" />
+            <ChevronRight className="w-6 h-6" />
           </button>
         </div>
       </div>
 
-      {/* Simple layout: Image left, Info right */}
-      <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-        <div className="grid md:grid-cols-2 gap-8">
+      {/* Modern layout: Floating card style */}
+      <div className="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-gray-50 group">
+        <div className="grid md:grid-cols-2">
           {/* Image section */}
-          <div className="relative">
+          <div className="relative h-80 md:h-[500px] overflow-hidden">
             <img
               src={currentMedicine.image}
               alt={currentMedicine.name}
-              className="w-full h-64 md:h-80 object-cover rounded-lg"
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             />
-            <div className="absolute top-3 right-3">
+            <div className="absolute top-6 left-6">
               <span
-                className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  currentMedicine.category === "Cardiologie"
-                    ? "bg-red-100 text-red-800"
-                    : currentMedicine.category === "Neurologie"
-                    ? "bg-purple-100 text-purple-800"
+                className={`px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg ${currentMedicine.category === "Cardiologie"
+                  ? "bg-red-500 text-white"
+                  : currentMedicine.category === "Neurologie"
+                    ? "bg-purple-500 text-white"
                     : currentMedicine.category === "Analgésique"
-                    ? "bg-blue-100 text-blue-800"
-                    : currentMedicine.category === "Antibiotique"
-                    ? "bg-green-100 text-green-800"
-                    : "bg-gray-100 text-gray-800"
-                }`}
+                      ? "bg-blue-500 text-white"
+                      : currentMedicine.category === "Antibiotique"
+                        ? "bg-green-500 text-white"
+                        : "bg-gray-800 text-white"
+                  }`}
               >
                 {currentMedicine.category}
               </span>
@@ -158,62 +233,54 @@ const SimpleCarousel = ({
           </div>
 
           {/* Information section */}
-          <div className="flex flex-col justify-center space-y-4">
+          <div className="flex flex-col justify-center p-8 md:p-16 space-y-8 bg-gradient-to-br from-white to-blue-50/30">
             <div>
-              <h4 className="text-2xl font-bold text-gray-800">
+              <h4 className="text-4xl font-extrabold text-gray-900 mb-3 tracking-tight">
                 {currentMedicine.name}
               </h4>
-              <p className="text-gray-600">{currentMedicine.scientificName}</p>
+              <p className="text-xl text-blue-600/80 font-medium italic">{currentMedicine.scientificName}</p>
             </div>
 
-            <p className="text-gray-600 leading-relaxed">
+            <p className="text-gray-600 text-lg leading-relaxed font-light">
               {currentMedicine.description}
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex items-center space-x-2">
-                <Pill className="w-5 h-5 text-blue-500" />
+            <div className="grid grid-cols-2 gap-6 pt-4 border-t border-gray-100">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 rounded-2xl bg-blue-100 flex items-center justify-center">
+                  <Pill className="w-6 h-6 text-blue-600" />
+                </div>
                 <div>
-                  <p className="text-sm text-gray-500">Dosage</p>
-                  <p className="font-semibold text-gray-700">
+                  <p className="text-xs text-gray-400 uppercase font-bold tracking-widest">Dosage</p>
+                  <p className="font-bold text-gray-800">
                     {currentMedicine.dosage}
                   </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <Clock className="w-5 h-5 text-green-500" />
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center">
+                  <Clock className="w-6 h-6 text-green-600" />
+                </div>
                 <div>
-                  <p className="text-sm text-gray-500">Durée</p>
-                  <p className="font-semibold text-gray-700">
+                  <p className="text-xs text-gray-400 uppercase font-bold tracking-widest">Durée</p>
+                  <p className="font-bold text-gray-800">
                     {currentMedicine.duration}
                   </p>
                 </div>
               </div>
             </div>
-
-            {/* <div className="pt-4 border-t border-gray-100">
-              <div className="flex items-center justify-between">
-                <span className="text-2xl font-bold text-blue-600">
-                  
-                </span>
-                <button className="!bg-blue-600 hover:!bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                  Lire la notice
-                </button>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
 
       {totalSlides > 1 && (
-        <div className="flex justify-center mt-6 space-x-2">
+        <div className="flex justify-center mt-10 gap-3">
           {Array.from({ length: totalSlides }).map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`w-3 h-3 rounded-full transition-colors ${
-                index === currentSlide ? "!bg-blue-600" : "!bg-gray-300"
-              }`}
+              className={`h-1.5 transition-all duration-500 rounded-full ${index === currentSlide ? "w-12 bg-blue-600 shadow-lg shadow-blue-500/30" : "w-4 bg-gray-300"
+                }`}
             />
           ))}
         </div>
@@ -222,8 +289,8 @@ const SimpleCarousel = ({
   );
 };
 
+
 const MedicinesPage: React.FC = () => {
-  // NADOL variants for carousel
   const nadolVariants = [
     {
       name: "NADOL Plus",
@@ -267,7 +334,6 @@ const MedicinesPage: React.FC = () => {
     }
   ];
 
-  // Antibiotics for carousel
   const antibioticMedicines = [
     {
       name: "NADICILLINE 500",
@@ -311,7 +377,6 @@ const MedicinesPage: React.FC = () => {
     }
   ];
 
-  // Individual medicines for cards
   const individualMedicines = [
     {
       name: "NADICARD 5",
@@ -478,41 +543,59 @@ const MedicinesPage: React.FC = () => {
             <SimpleCarousel
               medicines={antibioticMedicines}
               title="Gamme Antibiotiques NADICILLINE"
+              variant="thin"
             />
-
-            {/* Product Range Cards */}
-            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-              <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
-                <div className="relative">
-                  <img
-                    src={productRange1}
-                    alt="Nos gammes de médicaments 1"
-                    className="w-full h-64 object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://via.placeholder.com/600x400/3B82F6/FFFFFF?text=${encodeURIComponent(
-                        "Nos gammes de médicaments 1"
-                      )}`;
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
-                <div className="relative">
-                  <img
-                    src={productRange2}
-                    alt="Nos gammes de médicaments 2"
-                    className="w-full h-64 object-cover"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://via.placeholder.com/600x400/3B82F6/FFFFFF?text=${encodeURIComponent(
-                        "Nos gammes de médicaments 2"
-                      )}`;
-                    }}
-                  />
-                </div>
-              </div>
-            </div> */}
           </div>
         </section>
+
+        {/* Research & Innovation Gallery */}
+        <section className="py-24 bg-slate-900 text-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 md:px-8">
+            <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6 text-center md:text-left">
+              <div className="md:w-2/3">
+                <h2 className="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight">
+                  Laboratoires & <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">Innovation</span>
+                </h2>
+                <p className="text-xl text-slate-400 max-w-xl font-light">
+                  Exploration scientifique et développement de pointe pour les traitements de demain.
+                </p>
+              </div>
+              <div className="flex gap-3 justify-center md:justify-end">
+                <div className="h-2 w-16 bg-blue-600 rounded-full shadow-lg shadow-blue-500/20"></div>
+                <div className="h-2 w-32 bg-slate-800 rounded-full"></div>
+              </div>
+            </div>
+
+            {/* Featured Research Image - Ultra Modern */}
+            <div className="relative rounded-[3rem] overflow-hidden mb-16 group h-[600px] border-4 border-slate-800/50 shadow-inner">
+              <img src={img15} alt="Research 15" className="w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/30 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-12 md:p-20 w-full md:w-2/3 text-left">
+                <span className="inline-flex items-center px-4 py-1 bg-blue-600/20 text-blue-400 border border-blue-500/30 rounded-full text-xs font-black uppercase tracking-[0.2em] mb-6 backdrop-blur-md">Pôle Excellence</span>
+                <h3 className="text-5xl md:text-6xl font-black mb-6 leading-none">Recherche Appliquée</h3>
+                <p className="text-xl text-slate-300 max-w-xl font-light leading-relaxed italic">
+                  "Nos équipes travaillent sans relâche pour garantir la stabilité et l'efficacité de chaque substance active."
+                </p>
+              </div>
+            </div>
+
+            {/* Scrolling Gallery - No scrollbar, sleek cards */}
+            <div className="flex gap-8 overflow-x-auto pb-10 scrollbar-hide snap-x -mx-4 px-4">
+              {[img16, img17, img18, img19, img20, img21, img22].map((img, idx) => (
+                <div key={idx} className="flex-shrink-0 w-[80vw] md:w-[400px] snap-center">
+                  <div className="relative rounded-[2rem] overflow-hidden aspect-[3/4] group border-2 border-slate-800/50">
+                    <img src={img} alt={`Research ${idx + 16}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-blue-600/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center backdrop-blur-sm p-6 text-center">
+                      <h5 className="text-white font-black uppercase tracking-[0.2em] text-sm mb-2">Unité de Recherche</h5>
+                      <p className="text-blue-100 font-light text-xs">Excellence & Innovation Constante</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
 
         {/* Individual Medicines */}
         <section className="py-16 bg-gray-100">
@@ -553,9 +636,7 @@ const MedicinesPage: React.FC = () => {
                       <li>• Vérifiez les interactions médicamenteuses</li>
                     </ul>
                     <ul className="space-y-2">
-                      <li>
-                        • Conservez les médicaments hors de portée des enfants
-                      </li>
+                      <li>• Conservez les médicaments hors de portée des enfants</li>
                       <li>• Respectez les conditions de conservation</li>
                       <li>• Ne dépassez pas la date d'expiration</li>
                       <li>• Signalez tout effet indésirable à votre médecin</li>
@@ -585,7 +666,7 @@ const MedicinesPage: React.FC = () => {
       <section className="py-8 px-4 lg:px-48 md:px-8 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <button
-            className="!bg-white inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300 group"
+            className="bg-white inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300 group px-4 py-2 rounded-lg border border-gray-200"
             onClick={() => navigate("/")}
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />

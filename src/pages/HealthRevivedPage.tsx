@@ -8,10 +8,19 @@ import {
   Award,
   Target,
   ChevronLeft,
-  ChevronRight,
-  Play
+  ChevronRight
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
+// Import images from nadpic
+import img1 from "../assets/nadpic/1.png";
+import img2 from "../assets/nadpic/2.png";
+import img3 from "../assets/nadpic/3.png";
+import img4 from "../assets/nadpic/4.png";
+import img5 from "../assets/nadpic/5.png";
+import img6 from "../assets/nadpic/6.png";
+import img7 from "../assets/nadpic/7.png";
+
 
 // Footer Component
 const Footer = () => (
@@ -49,70 +58,67 @@ const VideoCarousel: React.FC = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative group">
       {/* Main Video Display */}
-      <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-2xl shadow-2xl">
+      <div className="relative pb-[56.25%] h-0 overflow-hidden rounded-[2rem] shadow-2xl border-4 border-white/50">
         <iframe
-          className="absolute top-0 left-0 w-full h-full transition-opacity duration-500"
-          src={`https://www.youtube.com/embed/${videos[currentVideo].id}?rel=0&modestbranding=1`}
+          className="absolute top-0 left-0 w-full h-full transition-opacity duration-1000"
+          src={`https://www.youtube.com/embed/${videos[currentVideo].id}?rel=0&modestbranding=1&autoplay=0`}
           title={videos[currentVideo].title}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
 
-        {/* Navigation Arrows */}
+        {/* Navigation Arrows - Sleeker design */}
         <button
           onClick={prevVideo}
-          className="absolute left-4 top-1/2 -translate-y-1/2 !bg-transparent text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hover:scale-110 z-10"
+          className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 backdrop-blur-md opacity-0 group-hover:opacity-100 transform -translate-x-4 group-hover:translate-x-0 z-20 border border-white/20"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
 
         <button
           onClick={nextVideo}
-          className="absolute right-4 top-1/2 -translate-y-1/2 !bg-transparent text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm hover:scale-110 z-10"
+          className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 text-white rounded-full transition-all duration-300 backdrop-blur-md opacity-0 group-hover:opacity-100 transform translate-x-4 group-hover:translate-x-0 z-20 border border-white/20"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
 
-        {/* Video Info Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-500 to-transparent p-6 text-white">
-          <h3 className="text-xl font-bold mb-2">
-            {videos[currentVideo].title}
-          </h3>
-          <p className="text-gray-200">{videos[currentVideo].description}</p>
+        {/* Video Info Overlay - Modern Glassmorphism */}
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent p-10 text-white pointer-events-none">
+          <div className="max-w-2xl">
+            <h3 className="text-3xl font-bold mb-3 tracking-tight">
+              {videos[currentVideo].title}
+            </h3>
+            <p className="text-blue-100/90 text-lg leading-relaxed">
+              {videos[currentVideo].description}
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Thumbnail Navigation */}
-      <div className="flex justify-center gap-4 mt-6">
+      {/* Thumbnail Navigation - Minimalist dots/thumbnails */}
+      <div className="flex justify-center gap-3 mt-8">
         {videos.map((video, index) => (
           <button
             key={video.id}
             onClick={() => setCurrentVideo(index)}
-            className={`relative overflow-hidden rounded-lg transition-all duration-300 ${
-              index === currentVideo
-                ? "ring-4 !ring-blue-500 shadow-xl scale-105"
-                : "opacity-70 hover:opacity-100 hover:scale-105"
-            }`}
+            className={`group/thumb relative h-2 transition-all duration-500 rounded-full ${index === currentVideo
+              ? "w-16 !bg-blue-600 shadow-lg shadow-blue-500/30"
+              : "w-4 !bg-gray-300 hover:!bg-blue-400"
+              }`}
           >
-            <div className="w-32 h-18 !bg-gradient-to-br !from-blue-500 !to-green-500 flex items-center justify-center">
-              <img
-                src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
-                alt={video.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                <Play className="w-6 h-6 text-white" />
-              </div>
-            </div>
+            <span className="absolute -top-12 left-1/2 -translate-x-1/2 scale-0 group-hover/thumb:scale-100 transition-transform duration-300 bg-gray-800 text-white text-xs py-1 px-3 rounded whitespace-nowrap hidden md:block">
+              {video.title}
+            </span>
           </button>
         ))}
       </div>
     </div>
   );
 };
+
 
 const HealthRevivedPage: React.FC = () => {
   const navigate = useNavigate();
@@ -168,6 +174,74 @@ const HealthRevivedPage: React.FC = () => {
                 allowFullScreen
               ></iframe>
             </div>
+          </div>
+        </section>
+
+        {/* Visual Journey Section */}
+        <section className="py-20 bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 md:px-8">
+            <div className="flex flex-col md:flex-row items-center gap-12 mb-20">
+              <div className="md:w-1/2">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-serif">
+                  Un Héritage de <span className="text-blue-600">Confiance</span>
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                  Depuis nos débuts, nous nous efforçons de repousser les limites de la science pour offrir des solutions de santé innovantes. Chaque image raconte une histoire d'engagement, de précision et de soin.
+                </p>
+                <div className="flex gap-4">
+                  <div className="h-1 w-20 bg-blue-600 rounded-full"></div>
+                  <div className="h-1 w-10 bg-green-500 rounded-full"></div>
+                </div>
+              </div>
+              <div className="md:w-1/2 grid grid-cols-2 gap-4">
+                <div className="space-y-4">
+                  <div className="overflow-hidden rounded-2xl shadow-lg hover:scale-[1.02] transition-transform duration-500">
+                    <img src={img1} alt="Heritage 1" className="w-full h-48 object-cover" />
+                  </div>
+                  <div className="overflow-hidden rounded-2xl shadow-lg hover:scale-[1.02] transition-transform duration-500">
+                    <img src={img2} alt="Heritage 2" className="w-full h-64 object-cover" />
+                  </div>
+                </div>
+                <div className="space-y-4 pt-8">
+                  <div className="overflow-hidden rounded-2xl shadow-lg hover:scale-[1.02] transition-transform duration-500">
+                    <img src={img3} alt="Heritage 3" className="w-full h-64 object-cover" />
+                  </div>
+                  <div className="overflow-hidden rounded-2xl shadow-lg hover:scale-[1.02] transition-transform duration-500">
+                    <img src={img4} alt="Heritage 4" className="w-full h-48 object-cover" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Horizontal Scroll Gallery */}
+            <div className="relative mt-20">
+              <div className="flex gap-8 overflow-x-auto pb-12 scrollbar-hide snap-x px-4 -mx-4">
+                {[img5, img6, img7].map((img, idx) => (
+                  <div key={idx} className="flex-shrink-0 w-[85vw] md:w-[600px] snap-center">
+                    <div className="relative group overflow-hidden rounded-[2.5rem] shadow-2xl aspect-[16/10] bg-gray-100 border-8 border-white">
+                      <img
+                        src={img}
+                        alt={`Gallery ${idx + 5}`}
+                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 flex flex-col justify-end p-10 transform translate-y-4 group-hover:translate-y-0 text-white">
+                        <span className="text-blue-400 font-bold uppercase tracking-widest text-sm mb-2">Standard International</span>
+                        <h4 className="text-3xl font-bold mb-2">Innovation & Qualité</h4>
+                        <p className="text-blue-100/90 leading-relaxed font-light">L'excellence pharmaceutique au service de l'Algérie.</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Simple hint for mobile */}
+              <div className="flex justify-center gap-2 md:hidden">
+                <div className="w-8 h-1 bg-blue-600 rounded-full"></div>
+                <div className="w-2 h-1 bg-gray-300 rounded-full"></div>
+                <div className="w-2 h-1 bg-gray-300 rounded-full"></div>
+              </div>
+            </div>
+
           </div>
         </section>
 

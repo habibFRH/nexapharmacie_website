@@ -3,6 +3,16 @@ import { Link } from "react-router-dom";
 import { ArrowLeft, Mail, Phone, MapPin, Send, Sparkles } from "lucide-react";
 import Footer from "../components/Footer";
 
+// Import images from nadpic
+import img8 from "../assets/nadpic/8.png";
+import img9 from "../assets/nadpic/9.png";
+import img10 from "../assets/nadpic/10.png";
+import img11 from "../assets/nadpic/11.png";
+import img12 from "../assets/nadpic/12.png";
+import img13 from "../assets/nadpic/13.png";
+import img14 from "../assets/nadpic/14.png";
+
+
 const ContactPage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-slate-50 via-white to-cyan-50">
@@ -35,6 +45,59 @@ const ContactPage: React.FC = () => {
               Une question ? Un projet ? Parlons-en. Nous sommes toujours ravis
               d’échanger avec vous.
             </p>
+          </div>
+        </section>
+
+        {/* Facilities Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 md:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 font-serif">
+                Nos <span className="text-cyan-500">Installations</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                À la pointe de la technologie, nos laboratoires et centres de production garantissent une excellence sans compromis.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
+              <div className="md:col-span-2 md:row-span-2 relative overflow-hidden rounded-3xl group shadow-xl">
+                <img src={img8} alt="Facility 8" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center p-6 text-center text-white">
+                  <p className="text-xl font-bold leading-tight">Laboratoires de Haute Précision</p>
+                </div>
+              </div>
+              <div className="md:row-span-1 relative overflow-hidden rounded-3xl group shadow-lg">
+                <img src={img9} alt="Facility 9" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              </div>
+              <div className="md:row-span-2 relative overflow-hidden rounded-3xl group shadow-lg">
+                <img src={img10} alt="Facility 10" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              </div>
+              <div className="md:col-span-1 relative overflow-hidden rounded-3xl group shadow-lg">
+                <img src={img11} alt="Facility 11" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+              </div>
+              <div className="md:col-span-2 relative overflow-hidden rounded-3xl group shadow-lg">
+                <img src={img12} alt="Facility 12" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-cyan-600/20"></div>
+              </div>
+            </div>
+
+            <div className="mt-12 grid md:grid-cols-2 gap-8 items-center">
+              <div className="bg-gradient-to-br from-cyan-50 to-white p-8 rounded-3xl border border-cyan-100 shadow-sm">
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Innovation & Qualité</h3>
+                <p className="text-gray-600 leading-relaxed italic">
+                  "Notre engagement envers l'excellence se reflète dans chaque étape de notre processus de fabrication, utilisant les technologies les plus avancées pour assurer la sécurité de nos patients."
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="overflow-hidden rounded-2xl shadow-md h-40">
+                  <img src={img13} alt="Facility 13" className="w-full h-full object-cover" />
+                </div>
+                <div className="overflow-hidden rounded-2xl shadow-md h-40">
+                  <img src={img14} alt="Facility 14" className="w-full h-full object-cover" />
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
