@@ -10,7 +10,7 @@ import {
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Import images from nadpic
 import img1 from "../assets/nadpic/1.png";
@@ -121,7 +121,7 @@ const VideoCarousel: React.FC = () => {
 
 
 const HealthRevivedPage: React.FC = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       <main className="flex-grow relative">

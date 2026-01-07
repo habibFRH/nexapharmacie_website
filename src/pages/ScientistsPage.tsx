@@ -14,7 +14,7 @@ import {
   Database,
   Shield
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Import images from nadpic
 import img23 from "../assets/nadpic/23.png";
@@ -245,7 +245,7 @@ const ScientistModal = ({
 const ScientistsPage = () => {
   const [selectedScientist, setSelectedScientist] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const scientists = [
     {

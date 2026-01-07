@@ -8,7 +8,7 @@ import {
   Clock,
   AlertTriangle
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // Import all images properly for production builds
 import bacterieImg from "../assets/bacterie.png";
 import healthImg from "../assets/health.png";
@@ -462,7 +462,7 @@ const MedicinesPage: React.FC = () => {
       color: "bg-green-100 text-green-800"
     }
   ];
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
