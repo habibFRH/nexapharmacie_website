@@ -43,7 +43,7 @@ const VideoIntroSection: React.FC = () => {
                         L’innovation au cœur de la science
                     </h2>
 
-                    <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-lg">
+                    <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-lg">
                         Nous combinons recherche avancée et technologies de pointe pour
                         transformer la science moléculaire en solutions concrètes
                         pour l’avenir de la santé.

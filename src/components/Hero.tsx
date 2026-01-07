@@ -105,7 +105,7 @@ const HeroCard: React.FC<HeroCardProps> = ({
 
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % images.length);
-    }, 1500);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [images.length]);
