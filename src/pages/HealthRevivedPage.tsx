@@ -10,7 +10,7 @@ import {
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Import images from nadpic
 import img1 from "../assets/nadpic/1.png";
@@ -124,7 +124,17 @@ const HealthRevivedPage: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-      <main className="flex-grow">
+      <main className="flex-grow relative">
+        {/* Floating Back Button */}
+        <div className="absolute top-6 left-6 z-50">
+          <Link
+            to="/"
+            className="!bg-white backdrop-blur-md border !border-white/20 text-black px-4 py-2 rounded-full inline-flex items-center gap-2 hover:bg-white hover:text-blue-600 transition-all duration-300 shadow-xl group"
+          >
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
+            <span className="font-semibold">Go Back</span>
+          </Link>
+        </div>
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-blue-600 to-green-600 text-white py-20 px-4 lg:px-48 md:px-8">
           <div className="absolute inset-0 bg-black/20"></div>
@@ -399,15 +409,6 @@ const HealthRevivedPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Back to Home */}
-        <section className="py-8 px-4 lg:px-48 md:px-8 bg-gray-50">
-          <div className="max-w-4xl mx-auto">
-            <button className="!bg-white inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300 group" onClick={() => navigate("/")}>
-              <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
-              Back to Home
-            </button>
-          </div>
-        </section>
       </main>
 
       <Footer />

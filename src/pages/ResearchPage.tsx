@@ -8,7 +8,7 @@ import {
   Clock,
   AlertTriangle
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Import all images properly for production builds
 import bacterieImg from "../assets/bacterie.png";
 import healthImg from "../assets/health.png";
@@ -466,7 +466,18 @@ const MedicinesPage: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <main className="flex-grow">
+      <main className="flex-grow relative">
+        {/* Floating Back Button */}
+        <div className="absolute top-6 left-6 z-50">
+          <Link
+            to="/"
+            className="!bg-white backdrop-blur-md border !border-white/20 text-black px-4 py-2 rounded-full inline-flex items-center gap-2 hover:bg-white hover:text-blue-600 transition-all duration-300 shadow-xl group"
+          >
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
+            <span className="font-semibold">Go Back</span>
+          </Link>
+        </div>
+
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-blue-600 to-green-600 text-white py-16">
           <div className="max-w-7xl mx-auto px-4 lg:px-48 md:px-8">
@@ -662,18 +673,6 @@ const MedicinesPage: React.FC = () => {
         </section>
       </main>
 
-      {/* Navigation de retour */}
-      <section className="py-8 px-4 lg:px-48 md:px-8 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <button
-            className="bg-white inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-300 group px-4 py-2 rounded-lg border border-gray-200"
-            onClick={() => navigate("/")}
-          >
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform duration-300" />
-            Back to Home
-          </button>
-        </div>
-      </section>
 
       <Footer />
     </div>
